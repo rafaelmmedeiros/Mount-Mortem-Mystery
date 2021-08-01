@@ -7,7 +7,7 @@ public class Preparation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Teste 2
+        // Teste 3
     }
 
     // Update is called once per frame
