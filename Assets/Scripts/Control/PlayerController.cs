@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
+using RPG.Movement;
 
-namespace Assets.Scripts.Control
+namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
