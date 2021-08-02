@@ -4,5 +4,5 @@
 ## Main Programming Concepts
 
 - SOLID
-- Dependences Layers
+- Dependency Layers
 
