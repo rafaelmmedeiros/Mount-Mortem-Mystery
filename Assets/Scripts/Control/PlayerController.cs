@@ -9,8 +9,8 @@ namespace RPG.Control
     {
         private void Update()
         {
-            if (InteractWithCombat()) return;
-            if (InteractWithMovement()) return;
+            if (InteractWithCombat()) { return; }
+            if (InteractWithMovement()) { return; }
             print("Nothing to do :(");
         }
 
@@ -22,10 +22,7 @@ namespace RPG.Control
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
 
-                if (!GetComponent<Fighter>().CanAttack(target))
-                {
-                    continue;
-                }
+                if (!GetComponent<Fighter>().CanAttack(target)) { continue; }
 
                 if (Input.GetMouseButtonDown(0))
                 {
