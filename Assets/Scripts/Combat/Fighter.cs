@@ -12,10 +12,10 @@ namespace RPG.Combat
         [SerializeField] float timeBetweenAttacks = 1.21f;
         [SerializeField] float weaponDamage = 5f;
 
-        Health target;
+        Health targetHealth;
         Mover mover;
 
-        float timeSinceLastAttack = 0;
+        float timeSinceLastAttack = Mathf.Infinity;
 
         private void Start()
         {
@@ -26,12 +26,12 @@ namespace RPG.Combat
         {
             timeSinceLastAttack += Time.deltaTime;
 
-            if (target == null) { return; }
-            if (target.IsDead()) { return; }
+            if (targetHealth == null) return;
+            if (targetHealth.IsDead()) return;
 
             if (!GetIsInRange())
             {
-                mover.MoveTo(target.transform.position);
+                mover.MoveTo(targetHealth.transform.position);
             }
             else
             {
@@ -42,7 +42,7 @@ namespace RPG.Combat
 
         private void AttackBehavior()
         {
-            transform.LookAt(target.transform);
+            transform.LookAt(targetHealth.transform);
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
                 //  This will trigger the Hit() event
@@ -61,13 +61,13 @@ namespace RPG.Combat
         //  Animation Event
         public void Hit()
         {
-            if (target == null) return;
-            target.TakeDamage(weaponDamage);
+            if (targetHealth == null) return;
+            targetHealth.TakeDamage(weaponDamage);
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
+            return Vector3.Distance(transform.position, targetHealth.transform.position) < weaponRange;
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -82,13 +82,13 @@ namespace RPG.Combat
         public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            target = combatTarget.GetComponent<Health>();
+            targetHealth = combatTarget.GetComponent<Health>();
         }
 
         public void Cancel()
         {
             StopAttack();
-            target = null;
+            targetHealth = null;
         }
 
         private void StopAttack()
