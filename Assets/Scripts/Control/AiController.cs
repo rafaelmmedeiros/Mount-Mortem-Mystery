@@ -52,10 +52,10 @@ namespace RPG.Control
                 PatrolBehavior();
             }
 
-            UpdateTimes();
+            UpdateTimers();
         }
 
-        private void UpdateTimes()
+        private void UpdateTimers()
         {
             timeSinceLastSawPlayer += Time.deltaTime;
             timeSinceArrivedAtWayPoint += Time.deltaTime;
