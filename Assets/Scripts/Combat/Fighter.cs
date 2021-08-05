@@ -31,7 +31,7 @@ namespace RPG.Combat
 
             if (!GetIsInRange())
             {
-                mover.MoveTo(targetHealth.transform.position);
+                mover.MoveTo(targetHealth.transform.position, 1);
             }
             else
             {
