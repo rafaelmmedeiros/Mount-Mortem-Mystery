@@ -26,7 +26,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a731d0ef4c61924b9cee49678f0aa03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrolPath: {fileID: 0}
   chaseDistance: 5
+  suspiciousTime: 5
+  wayPointTolerance: 1
+  wayPointDwellTime: 3
 --- !u!114 &5531834124827198380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +111,10 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 857336290, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
+      propertyPath: characterSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1766724695714169904, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: health
       value: 20
@@ -117,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5477636830816815559, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: m_Name
-      value: Enemy (1)
+      value: Enemy (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5477636830816815611, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: m_RootOrder
@@ -125,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5477636830816815611, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.76
+      value: -6.36
       objectReference: {fileID: 0}
     - target: {fileID: 5477636830816815611, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: m_LocalPosition.y
@@ -133,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5477636830816815611, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.53
+      value: 5.33
       objectReference: {fileID: 0}
     - target: {fileID: 5477636830816815611, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: m_LocalRotation.w
