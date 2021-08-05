@@ -71,7 +71,6 @@ namespace RPG.Control
             return distanceToPlayer < chaseDistance;
         }
 
-        //  UNITY ONLY
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.blue;
