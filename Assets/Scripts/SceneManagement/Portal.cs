@@ -12,7 +12,6 @@ namespace RPG.SceneManagement
         A, B, C, D, E, F, G
     }
 
-
     public class Portal : MonoBehaviour
     {
         [SerializeField] int sceneToLoad = -1;
