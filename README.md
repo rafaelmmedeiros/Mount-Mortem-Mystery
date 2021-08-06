@@ -5,4 +5,5 @@
 
 - SOLID
 - Dependency Layers
+- No Singleton allowed. 
 
