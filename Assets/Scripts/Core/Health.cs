@@ -1,6 +1,4 @@
-﻿using RPG.Core.Interfaces;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RPG.Core
 {
