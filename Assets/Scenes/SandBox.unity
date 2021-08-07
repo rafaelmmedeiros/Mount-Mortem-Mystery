@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    accuratePlacement: 1
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -1035,7 +1035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4372348789597376, guid: e0331453113676149a9c0b2bc03e60de, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.129
+      value: -0.045
       objectReference: {fileID: 0}
     - target: {fileID: 4372348789597376, guid: e0331453113676149a9c0b2bc03e60de, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4033,7 +4033,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101183031}
-  m_LocalRotation: {x: 0.11104676, y: 0.7948942, z: -0.15311049, w: 0.57651454}
+  m_LocalRotation: {x: 0.111046754, y: 0.7948943, z: -0.15311055, w: 0.5765144}
   m_LocalPosition: {x: -26.95053, y: -10.602493, z: -17.537079}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
