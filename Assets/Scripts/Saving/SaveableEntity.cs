@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 namespace RPG.Saving
@@ -8,11 +9,9 @@ namespace RPG.Saving
     {
         [SerializeField] string uniqueIdentifier = "";
 
-        //System.Guid.NewGuid().ToString();
-
         public string GetUniqueIdentifier()
         {
-            return "Id";
+            return uniqueIdentifier;
         }
 
         public object CaptureState()
@@ -26,11 +25,23 @@ namespace RPG.Saving
             print("Restoring state for: " + GetUniqueIdentifier());
         }
 
+#if UNITY_EDITOR
         private void Update()
         {
             if (Application.IsPlaying(gameObject)) return;
+            if (string.IsNullOrEmpty(gameObject.scene.path)) return;
+
+            SerializedObject serializedObject = new SerializedObject(this);
+            SerializedProperty serializedProperty = serializedObject.FindProperty("uniqueIdentifier");
+
+            if (string.IsNullOrEmpty(serializedProperty.stringValue))
+            {
+                serializedProperty.stringValue = System.Guid.NewGuid().ToString();
+                serializedObject.ApplyModifiedProperties();
+            }
 
             print("Updating:");
         }
+#endif
     }
 }
