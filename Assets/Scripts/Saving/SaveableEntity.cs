@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using RPG.Core;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace RPG.Saving
 {
@@ -16,13 +18,16 @@ namespace RPG.Saving
 
         public object CaptureState()
         {
-            print("Capturing state for: " + GetUniqueIdentifier());
-            return null;
+            return new SerializableVector3(transform.position);
         }
 
         public void RestoreState(object state)
         {
-            print("Restoring state for: " + GetUniqueIdentifier());
+            SerializableVector3 position = (SerializableVector3)state;
+            GetComponent<NavMeshAgent>().enabled = false;
+            transform.position = position.ToVector();
+            GetComponent<NavMeshAgent>().enabled = true;
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
 #if UNITY_EDITOR
@@ -39,8 +44,6 @@ namespace RPG.Saving
                 serializedProperty.stringValue = System.Guid.NewGuid().ToString();
                 serializedObject.ApplyModifiedProperties();
             }
-
-            print("Updating:");
         }
 #endif
     }
