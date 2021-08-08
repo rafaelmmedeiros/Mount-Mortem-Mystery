@@ -1,10 +1,7 @@
-﻿using RPG.Core;
-using RPG.Saving.Interfaces;
-using System;
+﻿using RPG.Saving.Interfaces;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace RPG.Saving
 {
