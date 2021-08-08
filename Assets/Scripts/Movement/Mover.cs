@@ -1,7 +1,7 @@
 using RPG.Core;
 using RPG.Core.Interfaces;
-using RPG.Saving;
 using RPG.Saving.Interfaces;
+using RPG.Saving.Serializables;
 using UnityEngine;
 using UnityEngine.AI;
 
