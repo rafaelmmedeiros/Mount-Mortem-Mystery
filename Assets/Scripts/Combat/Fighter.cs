@@ -47,7 +47,6 @@ namespace RPG.Combat
                 //  This will trigger the Hit() event
                 TriggerAttack();
                 timeSinceLastAttack = 0;
-
             }
         }
 

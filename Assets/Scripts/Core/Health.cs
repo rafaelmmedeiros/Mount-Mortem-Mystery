@@ -22,8 +22,6 @@ namespace RPG.Core
             {
                 Die();
             }
-
-            Debug.Log("Health: " + healthPoints);
         }
 
         public void Die()
