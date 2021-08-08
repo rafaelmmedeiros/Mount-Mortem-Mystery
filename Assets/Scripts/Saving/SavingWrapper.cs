@@ -8,9 +8,9 @@ namespace RPG.Saving
     {
         const string defaultSaveFile = "save";
 
-        private void Start()
+        private IEnumerator Start()
         {
-            Load();
+            yield return GetComponent<SavingSystem>().LoadLastScene(defaultSaveFile);
         }
 
         private void Update()
