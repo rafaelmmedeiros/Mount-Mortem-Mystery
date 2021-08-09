@@ -27,8 +27,6 @@ namespace RPG.Cinematics
         {
             player.GetComponent<PlayerController>().enabled = true;
         }
-
-
     }
 }
 

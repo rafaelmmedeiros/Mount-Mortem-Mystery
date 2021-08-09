@@ -2,6 +2,7 @@
 using RPG.Movement;
 using RPG.Core;
 using RPG.Core.Interfaces;
+using System;
 
 namespace RPG.Combat
 {
@@ -10,6 +11,8 @@ namespace RPG.Combat
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1.21f;
         [SerializeField] float weaponDamage = 5f;
+        [SerializeField] GameObject weaponPrefab = null;
+        [SerializeField] Transform handTransform = null;
 
         Health targetHealth;
         Mover mover;
@@ -18,6 +21,7 @@ namespace RPG.Combat
 
         private void Start()
         {
+            SpawnWeapon();
             mover = GetComponent<Mover>();
         }
 
@@ -37,6 +41,10 @@ namespace RPG.Combat
                 mover.Cancel();
                 AttackBehavior();
             }
+        }
+        private void SpawnWeapon()
+        {
+            Instantiate(weaponPrefab, handTransform);
         }
 
         private void AttackBehavior()
