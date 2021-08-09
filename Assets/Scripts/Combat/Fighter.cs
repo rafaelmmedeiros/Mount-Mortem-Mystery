@@ -10,7 +10,9 @@ namespace RPG.Combat
     {
         [SerializeField] float timeBetweenAttacks = 1.21f;
         [SerializeField] Transform handTransform = null;
-        [SerializeField] Weapon weapon = null;
+        [SerializeField] Weapon defaultWeapon = null;
+
+        Weapon currentWeapon = null;
 
         Health targetHealth;
         Mover mover;
@@ -19,7 +21,7 @@ namespace RPG.Combat
 
         private void Start()
         {
-            SpawnWeapon();
+            EquipWeapon(defaultWeapon);
             mover = GetComponent<Mover>();
         }
 
@@ -30,7 +32,7 @@ namespace RPG.Combat
             if (targetHealth == null) return;
             if (targetHealth.IsDead()) return;
 
-            if (!GetIsInRange())
+            if (!IsInRange())
             {
                 mover.MoveTo(targetHealth.transform.position, 1);
             }
@@ -40,11 +42,12 @@ namespace RPG.Combat
                 AttackBehavior();
             }
         }
-        private void SpawnWeapon()
+
+        public void EquipWeapon(Weapon weapon)
         {
-            if (weapon == null) return;
+            currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(handTransform, animator);
+            currentWeapon.Spawn(handTransform, animator);
         }
 
         private void AttackBehavior()
@@ -68,12 +71,12 @@ namespace RPG.Combat
         public void Hit()
         {
             if (targetHealth == null) return;
-            targetHealth.TakeDamage(weapon.GetDamage());
+            targetHealth.TakeDamage(currentWeapon.GetDamage());
         }
 
-        private bool GetIsInRange()
+        private bool IsInRange()
         {
-            return Vector3.Distance(transform.position, targetHealth.transform.position) < weapon.GetRange();
+            return Vector3.Distance(transform.position, targetHealth.transform.position) < currentWeapon.GetRange();
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -91,16 +94,17 @@ namespace RPG.Combat
             targetHealth = combatTarget.GetComponent<Health>();
         }
 
-        public void Cancel()
-        {
-            StopAttack();
-            targetHealth = null;
-        }
-
         private void StopAttack()
         {
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("stopAttack");
+        }
+
+        //  INTERFACES
+        public void Cancel()
+        {
+            StopAttack();
+            targetHealth = null;
         }
     }
 }
