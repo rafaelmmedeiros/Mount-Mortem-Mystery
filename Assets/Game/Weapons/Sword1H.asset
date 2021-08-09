@@ -16,3 +16,4 @@ MonoBehaviour:
   animationOverride: {fileID: 22100000, guid: ebf991ab30140c444a79e2c2cec238f4, type: 2}
   damage: 10
   range: 2.2
+  isRightHand: 1
