@@ -1,4 +1,5 @@
 using RPG.Core;
+using System;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -13,12 +14,17 @@ namespace RPG.Combat
         [SerializeField] bool isRightHand = true;
         [SerializeField] Projectile projectile = null;
 
+        const string weaponName = "Weapon";
+
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
+            DestroyOldWeapon(rightHand, leftHand);
+
             if (equipedPrefab != null)
             {
                 Transform handTransform = GetTransformHand(rightHand, leftHand);
-                Instantiate(equipedPrefab, handTransform);
+                GameObject weapon = Instantiate(equipedPrefab, handTransform);
+                weapon.name = weaponName;
             }
 
             if (animationOverride != null)
@@ -46,6 +52,12 @@ namespace RPG.Combat
         public float GetRange()
         {
             return range;
+        }
+
+        //  PRIVATES
+        private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
+        {
+            throw new NotImplementedException();
         }
 
         private Transform GetTransformHand(Transform rightHand, Transform leftHand)
