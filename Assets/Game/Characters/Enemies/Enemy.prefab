@@ -44,73 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f99e1d887425c4cb5ebcad5501c4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &5627902961082652155
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2407221131067685370}
-    m_Modifications:
-    - target: {fileID: 133518, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-      propertyPath: m_Name
-      value: Character_Knights_Soldier_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
---- !u!4 &5627902961082696439 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 481036, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-  m_PrefabInstance: {fileID: 5627902961082652155}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5627902961082770165 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
-  m_PrefabInstance: {fileID: 5627902961082652155}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7884768789604380673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149,15 +82,15 @@ PrefabInstance:
     - target: {fileID: 2659579503017396415, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: handTransform
       value: 
-      objectReference: {fileID: 5627902961082770165}
+      objectReference: {fileID: 0}
     - target: {fileID: 2659579503017396415, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: lefttHandTransform
       value: 
-      objectReference: {fileID: 5627902961082696439}
+      objectReference: {fileID: 0}
     - target: {fileID: 2659579503017396415, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: rightHandTransform
       value: 
-      objectReference: {fileID: 5627902961082770165}
+      objectReference: {fileID: 0}
     - target: {fileID: 5477636830816815559, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -211,10 +144,5 @@ PrefabInstance:
 --- !u!1 &2407221131067685318 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5477636830816815559, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
-  m_PrefabInstance: {fileID: 7884768789604380673}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2407221131067685370 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5477636830816815611, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
   m_PrefabInstance: {fileID: 7884768789604380673}
   m_PrefabAsset: {fileID: 0}
