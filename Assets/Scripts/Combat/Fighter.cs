@@ -15,7 +15,7 @@ namespace RPG.Combat
 
         Weapon currentWeapon = null;
 
-        Health targetHealth;
+        Health target;
         Mover mover;
 
         float timeSinceLastAttack = Mathf.Infinity;
@@ -30,12 +30,12 @@ namespace RPG.Combat
         {
             timeSinceLastAttack += Time.deltaTime;
 
-            if (targetHealth == null) return;
-            if (targetHealth.IsDead()) return;
+            if (target == null) return;
+            if (target.IsDead()) return;
 
             if (!IsInRange())
             {
-                mover.MoveTo(targetHealth.transform.position, 1);
+                mover.MoveTo(target.transform.position, 1);
             }
             else
             {
@@ -53,7 +53,7 @@ namespace RPG.Combat
 
         private void AttackBehavior()
         {
-            transform.LookAt(targetHealth.transform);
+            transform.LookAt(target.transform);
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
                 //  This will trigger the Hit() event
@@ -71,13 +71,27 @@ namespace RPG.Combat
         //  Animation Event
         public void Hit()
         {
-            if (targetHealth == null) return;
-            targetHealth.TakeDamage(currentWeapon.GetDamage());
+            if (target == null) return;
+
+            if (currentWeapon.HasProjectile())
+            {
+                currentWeapon.LauchProjectile(rightHandTransform, lefttHandTransform, target);
+            }
+            else
+            {
+                target.TakeDamage(currentWeapon.GetDamage());
+            }
+        }
+
+        //  Animation Event
+        public void Shoot()
+        {
+            Hit();
         }
 
         private bool IsInRange()
         {
-            return Vector3.Distance(transform.position, targetHealth.transform.position) < currentWeapon.GetRange();
+            return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.GetRange();
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -92,7 +106,7 @@ namespace RPG.Combat
         public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            targetHealth = combatTarget.GetComponent<Health>();
+            target = combatTarget.GetComponent<Health>();
         }
 
         private void StopAttack()
@@ -105,7 +119,7 @@ namespace RPG.Combat
         public void Cancel()
         {
             StopAttack();
-            targetHealth = null;
+            target = null;
         }
     }
 }
