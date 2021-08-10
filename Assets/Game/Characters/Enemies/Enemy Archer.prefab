@@ -58,6 +58,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1204793147, guid: 1d69410784f489b468391ee08d23cc3f, type: 3}
+      propertyPath: chaseDistance
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2407221131067685318, guid: 1d69410784f489b468391ee08d23cc3f, type: 3}
       propertyPath: m_Name
       value: Enemy Archer
@@ -109,7 +113,7 @@ PrefabInstance:
     - target: {fileID: 5297616380990306494, guid: 1d69410784f489b468391ee08d23cc3f, type: 3}
       propertyPath: defaultWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: f8df11a62f6a5f44ea37e9695239ce5d, type: 2}
+      objectReference: {fileID: 11400000, guid: 6c650eee37f47a7408146db36ec53726, type: 2}
     - target: {fileID: 5297616380990306494, guid: 1d69410784f489b468391ee08d23cc3f, type: 3}
       propertyPath: lefttHandTransform
       value: 
