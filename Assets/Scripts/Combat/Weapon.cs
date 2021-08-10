@@ -57,7 +57,15 @@ namespace RPG.Combat
         //  PRIVATES
         private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
         {
-            throw new NotImplementedException();
+            Transform oldWeapon = rightHand.Find(weaponName);
+            if (oldWeapon == null)
+            {
+                oldWeapon = leftHand.Find(weaponName);
+            }
+            if (oldWeapon == null) return;
+
+            oldWeapon.name = "DESTROY"; //  Added to avoid conflicts
+            Destroy(oldWeapon.gameObject);
         }
 
         private Transform GetTransformHand(Transform rightHand, Transform leftHand)
