@@ -22,6 +22,13 @@ public class Projectile : MonoBehaviour
         this.damage = damage;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Health>() != target) return;
+        target.TakeDamage(damage);
+        Destroy(gameObject);
+    }
+
     //  PRIVATES
     private Vector3 GetAimLocation()
     {
@@ -30,7 +37,6 @@ public class Projectile : MonoBehaviour
         {
             return target.transform.position;
         }
-
-        return target.transform.position + Vector3.up * targetCapsule.height / 2f;
+        return target.transform.position + Vector3.up * targetCapsule.height / 1.5f;
     }
 }
