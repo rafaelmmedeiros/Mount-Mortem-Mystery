@@ -36,7 +36,7 @@ namespace RPG.Combat
         public void LauchProjectile(Transform righHand, Transform leftHand, Health target)
         {
             Projectile projectileToLauch = Instantiate(projectile, GetTransformHand(righHand, leftHand).position, Quaternion.identity);
-            projectileToLauch.SetTarget(target);
+            projectileToLauch.SetTarget(target, damage);
         }
 
         public float GetDamage()
