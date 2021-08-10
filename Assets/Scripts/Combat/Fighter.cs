@@ -2,7 +2,6 @@
 using RPG.Movement;
 using RPG.Core;
 using RPG.Core.Interfaces;
-using System;
 
 namespace RPG.Combat
 {
