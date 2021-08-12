@@ -8,6 +8,9 @@ namespace RPG.Combat
         [SerializeField] float speed = 15f;
         [SerializeField] bool IsHoming = true;
         [SerializeField] GameObject hitEffect = null;
+        [SerializeField] float maxLifeTime = 10f;
+        [SerializeField] float lifeAfterImpact = 2f;
+        [SerializeField] GameObject[] destroyOnHitArray = null;
 
         float damage = 0;
 
@@ -33,6 +36,8 @@ namespace RPG.Combat
         {
             this.target = target;
             this.damage = damage;
+
+            Destroy(gameObject, maxLifeTime);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -42,12 +47,20 @@ namespace RPG.Combat
 
             target.TakeDamage(damage);
 
+            //  STOP PROJECTILE ON TARGET
+            speed = 0;
+
             if (hitEffect != null)
             {
                 Instantiate(hitEffect, GetAimLocation(), transform.rotation);
             }
 
-            Destroy(gameObject);
+            foreach (GameObject toDestroy in destroyOnHitArray)
+            {
+                Destroy(toDestroy);
+            }
+
+            Destroy(gameObject, lifeAfterImpact);
         }
 
         //  PRIVATES
