@@ -2,16 +2,16 @@
 using RPG.Movement;
 using RPG.Core;
 using RPG.Core.Interfaces;
+using RPG.Saving.Interfaces;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] float timeBetweenAttacks = 1.21f;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform lefttHandTransform = null;
         [SerializeField] Weapon defaultWeapon = null;
-        [SerializeField] string defaultWeaponName = "Unarmed"; //   For subFolders use folder/SOName
 
         Weapon currentWeapon = null;
 
@@ -22,8 +22,10 @@ namespace RPG.Combat
 
         private void Start()
         {
-            Weapon weapon = Resources.Load<Weapon>(defaultWeaponName);
-            EquipWeapon(weapon);
+            if (currentWeapon == null)
+            {
+                EquipWeapon(defaultWeapon);
+            }
             mover = GetComponent<Mover>();
         }
 
@@ -69,32 +71,6 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("attack");
         }
 
-        //  Animation Event
-        public void Hit()
-        {
-            if (target == null) return;
-
-            if (currentWeapon.HasProjectile())
-            {
-                currentWeapon.LauchProjectile(rightHandTransform, lefttHandTransform, target);
-            }
-            else
-            {
-                target.TakeDamage(currentWeapon.GetDamage());
-            }
-        }
-
-        //  Animation Event
-        public void Shoot()
-        {
-            Hit();
-        }
-
-        private bool IsInRange()
-        {
-            return Vector3.Distance(transform.position, target.transform.position) <= currentWeapon.GetRange();
-        }
-
         public bool CanAttack(GameObject combatTarget)
         {
             if (combatTarget == null) return false;
@@ -110,10 +86,36 @@ namespace RPG.Combat
             target = combatTarget.GetComponent<Health>();
         }
 
+        //  PRIVATES
+        private bool IsInRange()
+        {
+            return Vector3.Distance(transform.position, target.transform.position) <= currentWeapon.GetRange();
+        }
+
         private void StopAttack()
         {
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("stopAttack");
+        }
+
+        //  ANIMATION EVENTS
+        public void Hit()
+        {
+            if (target == null) return;
+
+            if (currentWeapon.HasProjectile())
+            {
+                currentWeapon.LauchProjectile(rightHandTransform, lefttHandTransform, target);
+            }
+            else
+            {
+                target.TakeDamage(currentWeapon.GetDamage());
+            }
+        }
+
+        public void Shoot()
+        {
+            Hit();
         }
 
         //  INTERFACES
@@ -121,6 +123,18 @@ namespace RPG.Combat
         {
             StopAttack();
             target = null;
+        }
+
+        public object CaptureState()
+        {
+            return currentWeapon.name;
+        }
+
+        public void RestoreState(object state)
+        {
+            string weaponName = (string)state;
+            Weapon weapon = Resources.Load<Weapon>(weaponName);
+            EquipWeapon(weapon);
         }
     }
 }
