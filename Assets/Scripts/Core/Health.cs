@@ -5,8 +5,8 @@ namespace RPG.Core
 {
     public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField]
-        float healthPoints = 100f;
+        [SerializeField] float healthPoints = 100f;
+        [SerializeField] bool IsImmortal = false;
 
         private bool isDead = false;
 
@@ -17,6 +17,8 @@ namespace RPG.Core
 
         public void TakeDamage(float damage)
         {
+            if (IsImmortal) return;
+
             healthPoints = Mathf.Max(healthPoints - damage, 0);
 
             if (healthPoints == 0)

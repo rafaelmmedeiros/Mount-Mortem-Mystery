@@ -1,5 +1,4 @@
 using RPG.Core;
-using System;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -27,9 +26,15 @@ namespace RPG.Combat
                 weapon.name = weaponName;
             }
 
+            //  Casting to animation return to default
+            var overrideCOntroller = animator.runtimeAnimatorController as AnimatorOverrideController;
             if (animationOverride != null)
             {
                 animator.runtimeAnimatorController = animationOverride;
+            }
+            else if (overrideCOntroller != null)
+            {
+                animator.runtimeAnimatorController = overrideCOntroller.runtimeAnimatorController;
             }
         }
 
