@@ -13,12 +13,6 @@ MonoBehaviour:
   m_Name: Progression
   m_EditorClassIdentifier: 
   characterClasses:
-  - characterClass: 0
-    health:
-    - 100
-    - 110
-    - 120
-    - 130
   - characterClass: 1
     health:
     - 100
@@ -27,13 +21,19 @@ MonoBehaviour:
     - 130
   - characterClass: 2
     health:
+    - 100
+    - 110
+    - 120
+    - 130
+  - characterClass: 3
+    health:
+    - 100
     - 108
     - 116
     - 124
-    - 132
-  - characterClass: 3
+  - characterClass: 4
     health:
+    - 100
     - 104
     - 108
     - 112
-    - 116
