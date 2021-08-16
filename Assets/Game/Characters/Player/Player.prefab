@@ -37,10 +37,6 @@ PrefabInstance:
       propertyPath: uniqueIdentifier
       value: player
       objectReference: {fileID: 0}
-    - target: {fileID: 1766724695714169904, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
-      propertyPath: healthPoints
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2304746420585007751, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: m_UseGravity
       value: 0
@@ -140,6 +136,10 @@ PrefabInstance:
     - target: {fileID: 5477636830816815611, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485394228240290277, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
+      propertyPath: characterClass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}

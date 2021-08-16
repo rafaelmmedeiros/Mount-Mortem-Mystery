@@ -589,6 +589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Melee (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2977257610624115713, guid: f55c7cc3d0e29d148b7fdd136caa860b, type: 3}
+      propertyPath: characterClass
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3602640429281356510, guid: f55c7cc3d0e29d148b7fdd136caa860b, type: 3}
       propertyPath: patrolPath
       value: 
