@@ -3,6 +3,7 @@ using RPG.Movement;
 using RPG.Core;
 using RPG.Core.Interfaces;
 using RPG.Saving.Interfaces;
+using RPG.Attributes;
 
 namespace RPG.Combat
 {

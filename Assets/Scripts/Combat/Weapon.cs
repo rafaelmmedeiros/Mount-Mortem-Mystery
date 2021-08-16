@@ -1,9 +1,9 @@
-using RPG.Core;
+using RPG.Attributes;
 using UnityEngine;
 
 namespace RPG.Combat
 {
-    [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Make new Weapon", order = 0)]
+    [CreateAssetMenu(fileName = "Weapon", menuName = "Combat/New Weapon", order = 0)]
     public class Weapon : ScriptableObject
     {
         [SerializeField] GameObject equipedPrefab = null;
