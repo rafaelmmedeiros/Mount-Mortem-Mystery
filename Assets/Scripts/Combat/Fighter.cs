@@ -111,11 +111,11 @@ namespace RPG.Combat
 
             if (currentWeapon.HasProjectile())
             {
-                currentWeapon.LauchProjectile(rightHandTransform, lefttHandTransform, target);
+                currentWeapon.LauchProjectile(rightHandTransform, lefttHandTransform, target, gameObject);
             }
             else
             {
-                target.TakeDamage(currentWeapon.GetDamage());
+                target.TakeDamage(gameObject, currentWeapon.GetDamage());
             }
         }
 

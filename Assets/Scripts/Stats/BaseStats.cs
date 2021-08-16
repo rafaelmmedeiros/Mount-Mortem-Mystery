@@ -13,5 +13,10 @@ namespace RPG.Stats
         {
             return progression.GetHealth(characterClass, characterLevel);
         }
+
+        public float GetExperienceRewatd()
+        {
+            return 10;
+        }
     }
 }
