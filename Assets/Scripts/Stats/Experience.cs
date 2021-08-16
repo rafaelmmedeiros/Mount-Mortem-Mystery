@@ -12,7 +12,7 @@ namespace RPG.Stats
             experiencePoints += experience;
         }
 
-        public float GetExperiencePoints()
+        public float GetPoints()
         {
             return experiencePoints;
         }

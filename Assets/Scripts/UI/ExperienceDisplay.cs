@@ -17,7 +17,7 @@ namespace RPG.UI
 
         private void Update()
         {
-            GetComponent<Text>().text = String.Format("{0:0}", experience.GetExperiencePoints());
+            GetComponent<Text>().text = String.Format("{0:0}", experience.GetPoints());
         }
     }
 }
