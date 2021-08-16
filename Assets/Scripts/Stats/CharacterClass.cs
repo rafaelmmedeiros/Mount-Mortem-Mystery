@@ -2,7 +2,7 @@ namespace RPG.Stats
 {
     public enum CharacterClass
     {
-        ToDefine,
+        Undefined,
         Player,
         Warrior,
         Rogue,
