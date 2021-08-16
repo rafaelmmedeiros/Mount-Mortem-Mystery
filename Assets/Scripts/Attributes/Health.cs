@@ -1,6 +1,7 @@
 ﻿using RPG.Core;
 using RPG.Saving.Interfaces;
 using RPG.Stats;
+using RPG.Stats.Enums;
 using UnityEngine;
 
 namespace RPG.Attributes
@@ -14,7 +15,7 @@ namespace RPG.Attributes
 
         private void Start()
         {
-            healthPoints = GetComponent<BaseStats>().GetHealth();
+            healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
         public bool IsDead()
@@ -45,7 +46,7 @@ namespace RPG.Attributes
 
         public float GetPercentageHealthPoints()
         {
-            return 100 * (healthPoints / GetComponent<BaseStats>().GetHealth());
+            return 100 * (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health));
         }
 
         //  PRIVATES
@@ -54,7 +55,7 @@ namespace RPG.Attributes
             Experience experience = instigator.GetComponent<Experience>();
             if (experience == null) return;
 
-            experience.GainExperience(GetComponent<BaseStats>().GetExperienceRewatd());
+            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
 
         //  INTERFACES

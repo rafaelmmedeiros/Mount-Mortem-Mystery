@@ -1,6 +1,6 @@
-namespace RPG.Stats
+namespace RPG.Stats.Enums
 {
-    enum Stat
+    public enum Stat
     {
         Health,
         ExperienceReward

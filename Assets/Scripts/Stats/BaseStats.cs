@@ -1,3 +1,4 @@
+using RPG.Stats.Enums;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -9,14 +10,9 @@ namespace RPG.Stats
         [SerializeField] CharacterClass characterClass;
         [SerializeField] Progression progression = null;
 
-        public float GetHealth()
+        public float GetStat(Stat stat)
         {
-            return progression.GetHealth(characterClass, characterLevel);
-        }
-
-        public float GetExperienceRewatd()
-        {
-            return 10;
+            return progression.GetStat(stat, characterClass, characterLevel);
         }
     }
 }
