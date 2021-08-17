@@ -22,12 +22,12 @@ MonoBehaviour:
       - 120
       - 130
       - 140
-    - stat: 1
+    - stat: 2
       levels:
-      - 100
-      - 100
-      - 100
-      - 100
+      - 20
+      - 40
+      - 60
+      - 80
       - 100
   - characterClass: 2
     stats:
