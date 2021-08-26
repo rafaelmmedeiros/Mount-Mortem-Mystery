@@ -15,15 +15,10 @@ namespace RPG.Stats
         private void Start()
         {
             currentLevel = CalculateLevel();
-        }
-
-        private void Update()
-        {
-            int newLevel = CalculateLevel();
-            if (newLevel > currentLevel)
+            Experience experience = GetComponent<Experience>();
+            if (experience != null)
             {
-                currentLevel = newLevel;
-                print("Level UP");
+                experience.onExperienceGained += UpdateLevel;
             }
         }
 
@@ -34,6 +29,10 @@ namespace RPG.Stats
 
         public int GetLevel()
         {
+            if (currentLevel < 1)
+            {
+                currentLevel = CalculateLevel();
+            }
             return currentLevel;
         }
 
@@ -56,6 +55,17 @@ namespace RPG.Stats
             }
 
             return penultimateLevel + 1;
+        }
+
+        //  PRIVATES
+        private void UpdateLevel()
+        {
+            int newLevel = CalculateLevel();
+            if (newLevel > currentLevel)
+            {
+                currentLevel = newLevel;
+                print("Level UP");
+            }
         }
     }
 }
