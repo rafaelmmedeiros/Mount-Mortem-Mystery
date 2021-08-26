@@ -8,8 +8,7 @@ namespace RPG.Stats
     {
         [SerializeField] float experiencePoints = 0;
 
-        //public delegate void ExperienceGainedDelegate();
-        public event Action onExperienceGained; //  Is the same thing above Action solve for void delegate
+        public event Action onExperienceGained;
 
         public void GainExperience(float experience)
         {
@@ -21,7 +20,6 @@ namespace RPG.Stats
         {
             return experiencePoints;
         }
-
 
         //  INTERFACES
         public object CaptureState()
