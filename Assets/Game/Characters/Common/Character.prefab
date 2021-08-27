@@ -191,7 +191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1dea7659eeef84cb7c16572ba0aa96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 100
   IsImmortal: 0
 --- !u!114 &-7039643240590925230
 MonoBehaviour:
@@ -221,3 +220,4 @@ MonoBehaviour:
   characterLevel: 1
   characterClass: 0
   progression: {fileID: 11400000, guid: 081422333c1d32541a0529ed2eb4bacb, type: 2}
+  levelUpParticleEffect: {fileID: 0}
