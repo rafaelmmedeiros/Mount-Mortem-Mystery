@@ -4363,6 +4363,10 @@ PrefabInstance:
       propertyPath: IsImmortal
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4254124485714432421, guid: f9f5335e2627f8d4a919f6ab1f702c90, type: 3}
+      propertyPath: regenerationPercentage
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 5719671035546028788, guid: f9f5335e2627f8d4a919f6ab1f702c90, type: 3}
       propertyPath: m_IsActive
       value: 0

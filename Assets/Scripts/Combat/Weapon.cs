@@ -43,10 +43,10 @@ namespace RPG.Combat
             return projectile != null;
         }
 
-        public void LauchProjectile(Transform righHand, Transform leftHand, Health target, GameObject instigator)
+        public void LauchProjectile(Transform righHand, Transform leftHand, Health target, GameObject instigator, float calculatedDamage)
         {
             Projectile projectileToLauch = Instantiate(projectile, GetTransformHand(righHand, leftHand).position, Quaternion.identity);
-            projectileToLauch.SetTarget(target, instigator, damage);
+            projectileToLauch.SetTarget(target, instigator, calculatedDamage);
         }
 
         public float GetDamage()

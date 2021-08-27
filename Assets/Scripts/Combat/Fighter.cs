@@ -4,6 +4,8 @@ using RPG.Core;
 using RPG.Core.Interfaces;
 using RPG.Saving.Interfaces;
 using RPG.Attributes;
+using RPG.Stats;
+using RPG.Stats.Enums;
 
 namespace RPG.Combat
 {
@@ -109,13 +111,16 @@ namespace RPG.Combat
         {
             if (target == null) return;
 
+            //float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+
+            float damage = 10;
             if (currentWeapon.HasProjectile())
             {
-                currentWeapon.LauchProjectile(rightHandTransform, lefttHandTransform, target, gameObject);
+                currentWeapon.LauchProjectile(rightHandTransform, lefttHandTransform, target, gameObject, damage);
             }
             else
             {
-                target.TakeDamage(gameObject, currentWeapon.GetDamage());
+                target.TakeDamage(gameObject, damage);
             }
         }
 

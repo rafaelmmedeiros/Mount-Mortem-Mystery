@@ -1,4 +1,5 @@
 using RPG.Stats.Enums;
+using System;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -12,6 +13,8 @@ namespace RPG.Stats
         [SerializeField] GameObject levelUpParticleEffect = null;
 
         int currentLevel = 0;
+
+        public event Action onLevelUp;
 
         private void Start()
         {
@@ -66,6 +69,7 @@ namespace RPG.Stats
             {
                 currentLevel = newLevel;
                 LevelUpEffect();
+                onLevelUp();
             }
         }
 
