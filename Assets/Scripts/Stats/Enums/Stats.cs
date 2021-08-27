@@ -4,6 +4,7 @@ namespace RPG.Stats.Enums
     {
         Health,
         ExperienceReward,
-        ExperienceToLevelUp
+        ExperienceToLevelUp,
+        Damage
     }
 }

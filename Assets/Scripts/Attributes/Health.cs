@@ -14,6 +14,8 @@ namespace RPG.Attributes
         float healthPoints = -1f;
         private bool isDead = false;
 
+        // TESTE
+
         private void Start()
         {
             GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
