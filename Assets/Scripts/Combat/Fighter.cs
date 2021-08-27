@@ -6,10 +6,12 @@ using RPG.Saving.Interfaces;
 using RPG.Attributes;
 using RPG.Stats;
 using RPG.Stats.Enums;
+using RPG.Stats.Interfaces;
+using System.Collections.Generic;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable
+    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
         [SerializeField] float timeBetweenAttacks = 1.21f;
         [SerializeField] Transform rightHandTransform = null;
@@ -133,6 +135,15 @@ namespace RPG.Combat
         {
             StopAttack();
             target = null;
+        }
+
+        public IEnumerable<float> GerAdditiveModifier(Stat stat)
+        {
+            //  It happen only when the stat requested is Damage
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.GetDamage();
+            }
         }
 
         public object CaptureState()
