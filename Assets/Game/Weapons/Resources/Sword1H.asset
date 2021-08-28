@@ -15,5 +15,7 @@ MonoBehaviour:
   equipedPrefab: {fileID: 781629566351419369, guid: 6e09aea458a49df4b92d6a7f32a8afe3, type: 3}
   animationOverride: {fileID: 22100000, guid: ebf991ab30140c444a79e2c2cec238f4, type: 2}
   damage: 10
+  percentageBonus: 20
   range: 2.2
   isRightHand: 1
+  projectile: {fileID: 0}
