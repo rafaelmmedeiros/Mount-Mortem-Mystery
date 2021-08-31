@@ -14,19 +14,39 @@ namespace RPG.Stats
         [SerializeField] GameObject levelUpParticleEffect = null;
         [SerializeField] bool useModifiers = false;
 
+        Experience experience;
+
         int currentLevel = 0;
 
         public event Action onLevelUp;
 
-        private void Start()
+        private void Awake()
         {
-            currentLevel = CalculateLevel();
-            Experience experience = GetComponent<Experience>();
+            experience = GetComponent<Experience>();
+        }
+
+        private void OnEnable()
+        {
             if (experience != null)
             {
                 experience.onExperienceGained += UpdateLevel;
             }
         }
+
+        private void Start()
+        {
+            currentLevel = CalculateLevel();
+        }
+
+        private void OnDisable()
+        {
+            if (experience != null)
+            {
+                experience.onExperienceGained -= UpdateLevel;
+            }
+        }
+
+
 
         public float GetStat(Stat stat)
         {

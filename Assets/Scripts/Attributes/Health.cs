@@ -14,15 +14,24 @@ namespace RPG.Attributes
         float healthPoints = -1f;
         private bool isDead = false;
 
-        // TESTE
+        private void OnEnable()
+        {
+            GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
+
+        }
 
         private void Start()
         {
-            GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
             if (healthPoints < 0)
             {
                 healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
             }
+        }
+
+        private void OnDisable()
+        {
+            GetComponent<BaseStats>().onLevelUp -= RegenerateHealth;
+
         }
 
         public float GetHealthPoints()
