@@ -123,6 +123,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6c650eee37f47a7408146db36ec53726, type: 2}
     - target: {fileID: 5297616380990306494, guid: 1d69410784f489b468391ee08d23cc3f, type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 1844367189339092621}
+    - target: {fileID: 5297616380990306494, guid: 1d69410784f489b468391ee08d23cc3f, type: 3}
       propertyPath: lefttHandTransform
       value: 
       objectReference: {fileID: 1844367189339092621}

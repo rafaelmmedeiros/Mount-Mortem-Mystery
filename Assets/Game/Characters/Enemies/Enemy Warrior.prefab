@@ -107,6 +107,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5297616380990306494, guid: 1d69410784f489b468391ee08d23cc3f, type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 2508232470275259727}
+    - target: {fileID: 5297616380990306494, guid: 1d69410784f489b468391ee08d23cc3f, type: 3}
       propertyPath: lefttHandTransform
       value: 
       objectReference: {fileID: 2508232470275259727}

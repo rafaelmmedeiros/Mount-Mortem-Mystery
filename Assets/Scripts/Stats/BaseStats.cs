@@ -1,5 +1,6 @@
 using RPG.Stats.Enums;
 using RPG.Stats.Interfaces;
+using RPG.Utils;
 using System;
 using UnityEngine;
 
@@ -15,14 +16,14 @@ namespace RPG.Stats
         [SerializeField] bool useModifiers = false;
 
         Experience experience;
-
-        int currentLevel = 0;
+        LazyValue<int> currentLevel;
 
         public event Action onLevelUp;
 
         private void Awake()
         {
             experience = GetComponent<Experience>();
+            currentLevel = new LazyValue<int>(CalculateLevel);
         }
 
         private void OnEnable()
@@ -35,7 +36,7 @@ namespace RPG.Stats
 
         private void Start()
         {
-            currentLevel = CalculateLevel();
+            currentLevel.value = CalculateLevel();
         }
 
         private void OnDisable()
@@ -46,8 +47,6 @@ namespace RPG.Stats
             }
         }
 
-
-
         public float GetStat(Stat stat)
         {
             return (GetBaseStat(stat) + GetAdditiveModifier(stat)) * (1 + GetPercentageModifier(stat) / 100);
@@ -55,11 +54,7 @@ namespace RPG.Stats
 
         public int GetLevel()
         {
-            if (currentLevel < 1)
-            {
-                currentLevel = CalculateLevel();
-            }
-            return currentLevel;
+            return currentLevel.value;
         }
 
         //  PRIVATES
@@ -122,9 +117,9 @@ namespace RPG.Stats
         private void UpdateLevel()
         {
             int newLevel = CalculateLevel();
-            if (newLevel > currentLevel)
+            if (newLevel > currentLevel.value)
             {
-                currentLevel = newLevel;
+                currentLevel.value = newLevel;
                 LevelUpEffect();
                 onLevelUp();
             }

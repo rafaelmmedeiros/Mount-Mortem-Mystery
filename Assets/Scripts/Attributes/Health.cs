@@ -23,7 +23,6 @@ namespace RPG.Attributes
         private void OnEnable()
         {
             GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
-
         }
 
         private void Start()
