@@ -102,7 +102,7 @@ namespace RPG.Attributes
         //  INTERFACES
         public object CaptureState()
         {
-            return healthPoints;
+            return healthPoints.value;
         }
 
         public void RestoreState(object state)
