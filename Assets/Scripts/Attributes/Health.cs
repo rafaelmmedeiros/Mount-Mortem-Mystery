@@ -55,7 +55,7 @@ namespace RPG.Attributes
         {
             if (IsImmortal) return;
 
-            print(gameObject.name + " took Damage: " + damage);
+            //print(gameObject.name + " took Damage: " + damage);
 
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
             if (healthPoints.value == 0)
@@ -79,7 +79,6 @@ namespace RPG.Attributes
             return 100 * (healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health));
         }
 
-        //  PRIVATES
         private float GetInitialHealth()
         {
             return GetComponent<BaseStats>().GetStat(Stat.Health);
