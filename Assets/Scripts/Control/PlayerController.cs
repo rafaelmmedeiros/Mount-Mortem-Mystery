@@ -23,6 +23,7 @@ namespace RPG.Control
 
         [SerializeField] CursorMapping[] cursorMappings = null;
         [SerializeField] float maxNavMeshProjectionDistance = 1f;
+        [SerializeField] float maxNavPathLenght = 20f;
 
         private void Awake()
         {
@@ -119,13 +120,39 @@ namespace RPG.Control
             NavMeshHit navMeshHit;
             bool hasCastToNavMesh = NavMesh.SamplePosition(
                 hit.point, out navMeshHit,
-                maxNavMeshProjectionDistance,
+                maxNavMeshProjectionDistance, // Bigger than that will not make the player move.
                 NavMesh.AllAreas); // SamplePosition return a closest NavMesh value.
 
             if (!hasCastToNavMesh) return false;
 
             target = navMeshHit.position;
+
+            NavMeshPath path = new NavMeshPath();
+            bool hasPath = NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
+
+            if (!hasPath) return false;
+            if (path.status != NavMeshPathStatus.PathComplete) return false; // Dont´target isolated unreachable NavMesh
+            if (GetPathLength(path) > maxNavPathLenght) return false;
+
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
+            }
+
             return true;
+        }
+
+        private float GetPathLength(NavMeshPath path)
+        {
+            float pathLegth = 0;
+            if (path.corners.Length < 2) return pathLegth;
+
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                pathLegth += Vector3.Distance(path.corners[i], path.corners[i + 1]);
+            }
+            //print(pathLegth);
+            return pathLegth;
         }
 
         private static Ray GetMouseRay()
