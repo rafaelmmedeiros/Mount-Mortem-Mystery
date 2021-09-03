@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using RPG.Movement;
-using RPG.Combat;
 using RPG.Attributes;
 using RPG.Control.Enums;
 using UnityEngine.EventSystems;
-using System;
 using RPG.Control.Interfaces;
+using System;
 
 namespace RPG.Control
 {
@@ -31,13 +30,11 @@ namespace RPG.Control
         private void Update()
         {
             if (InteractWithUI()) return;
-
             if (health.IsDead())
             {
                 SetCursor(CursorType.None);
                 return;
             }
-
             if (InteractWithComponent()) return;
             if (InteractWithMovement()) return;
 
@@ -56,8 +53,8 @@ namespace RPG.Control
 
         private bool InteractWithComponent()
         {
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-            foreach (RaycastHit hit in hits)
+            RaycastHit[] hitsSorted = RaycastAllSortedByDistance();
+            foreach (RaycastHit hit in hitsSorted)
             {
                 // Put inside the array only game objects with IRaycastble interface.
                 IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
@@ -71,6 +68,24 @@ namespace RPG.Control
                 }
             }
             return false;
+        }
+
+        private RaycastHit[] RaycastAllSortedByDistance()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+
+            //  Using Idiomatic C#
+            //Array.Sort(hits, (a, b) => Mathf.RoundToInt(a.distance - b.distance));
+
+            //  Normal use
+            float[] distances = new float[hits.Length];
+            for (int i = 0; i < hits.Length; i++)
+            {
+                distances[i] = hits[i].distance;
+            }
+            Array.Sort(distances, hits);
+
+            return hits;
         }
 
         private bool InteractWithMovement()
