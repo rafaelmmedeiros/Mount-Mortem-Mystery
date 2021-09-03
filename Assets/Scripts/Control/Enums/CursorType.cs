@@ -6,5 +6,6 @@
         Movement,
         Combat,
         UI,
+        Pickup,
     }
 }

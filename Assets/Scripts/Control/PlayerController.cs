@@ -65,7 +65,7 @@ namespace RPG.Control
                 {
                     if (raycastable.HandleRaycast(this))
                     {
-                        SetCursor(CursorType.Combat);
+                        SetCursor(raycastable.GetCursorType());
                         return true;
                     }
                 }
@@ -88,7 +88,6 @@ namespace RPG.Control
                 SetCursor(CursorType.Movement);
                 return true;
             }
-
             return false;
         }
 

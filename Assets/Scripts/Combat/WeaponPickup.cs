@@ -1,4 +1,5 @@
 using RPG.Control;
+using RPG.Control.Enums;
 using RPG.Control.Interfaces;
 using System;
 using System.Collections;
@@ -42,6 +43,11 @@ namespace RPG.Combat
         }
 
         //  INTERFACES
+        public CursorType GetCursorType()
+        {
+            return CursorType.Pickup;
+        }
+
         public bool HandleRaycast(PlayerController callingController)
         {
             if (Input.GetMouseButtonDown(0))
