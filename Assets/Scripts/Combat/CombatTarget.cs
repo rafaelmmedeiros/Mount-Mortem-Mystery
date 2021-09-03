@@ -11,7 +11,7 @@ namespace RPG.Combat
     {
         public CursorType GetCursorType()
         {
-            throw new System.NotImplementedException();
+            return CursorType.Combat;
         }
 
         public bool HandleRaycast(PlayerController callingController)

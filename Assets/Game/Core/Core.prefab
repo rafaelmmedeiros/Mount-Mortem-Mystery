@@ -58,16 +58,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2209658562822540072, guid: 59417a4ca7139134d89740aafd5614dc, type: 3}
       propertyPath: cursorMappings.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -2209658562822540072, guid: 59417a4ca7139134d89740aafd5614dc, type: 3}
       propertyPath: cursorMappings.Array.data[3].type
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -2209658562822540072, guid: 59417a4ca7139134d89740aafd5614dc, type: 3}
+      propertyPath: cursorMappings.Array.data[4].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -2209658562822540072, guid: 59417a4ca7139134d89740aafd5614dc, type: 3}
       propertyPath: cursorMappings.Array.data[3].texture
       value: 
       objectReference: {fileID: 2800000, guid: bb57a4c5a1ec38a41949d0975ede9ac1, type: 3}
+    - target: {fileID: -2209658562822540072, guid: 59417a4ca7139134d89740aafd5614dc, type: 3}
+      propertyPath: cursorMappings.Array.data[4].texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 42ec8a0e710138343a271d732299cfb6, type: 3}
     - target: {fileID: 5365464688347640137, guid: 59417a4ca7139134d89740aafd5614dc, type: 3}
       propertyPath: m_Name
       value: Player
