@@ -4,6 +4,7 @@ using RPG.Stats;
 using RPG.Stats.Enums;
 using RPG.Utils;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPG.Attributes
 {
@@ -11,6 +12,7 @@ namespace RPG.Attributes
     {
         [SerializeField] bool IsImmortal = false;
         [SerializeField] float regenerationPercentage = 70;
+        [SerializeField] UnityEvent takeDamage;
 
         LazyValue<float> healthPoints;
         private bool isDead = false;
@@ -58,10 +60,15 @@ namespace RPG.Attributes
             //print(gameObject.name + " took Damage: " + damage);
 
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
+
             if (healthPoints.value == 0)
             {
                 Die();
                 AwardExperience(instigator);
+            }
+            else
+            {
+                takeDamage.Invoke();
             }
         }
 
