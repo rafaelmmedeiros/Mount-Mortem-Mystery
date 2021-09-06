@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RPG.UI.DamageText
+namespace RPG.GUI.DamageText
 {
     public class DamageTextSpawner : MonoBehaviour
     {

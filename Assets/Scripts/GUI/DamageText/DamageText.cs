@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RPG.UI.DamageText
+namespace RPG.GUI.DamageText
 {
     public class DamageText : MonoBehaviour
     {
