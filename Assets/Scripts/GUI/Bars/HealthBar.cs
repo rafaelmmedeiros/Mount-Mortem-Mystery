@@ -14,7 +14,7 @@ namespace RPG.GUI.Bars
         void Update()
         {
             if (Mathf.Approximately(healthComponent.GetFraction(), 0) || Mathf.Approximately(healthComponent.GetFraction(), 1))
-                // Do not use float for this, there is no perfect float.
+            // Do not use float for this, there is no perfect float.
             {
                 rootCanvas.enabled = false;
                 return;
