@@ -12,7 +12,13 @@ namespace RPG.Attributes
     {
         [SerializeField] bool IsImmortal = false;
         [SerializeField] float regenerationPercentage = 70;
-        [SerializeField] UnityEvent takeDamage;
+        [SerializeField] UnityEvent<float> takeDamage;
+
+        // Unity does not reconize a Generic Type, need to be created a subclass from that event
+        // But It Works on unity 2020+
+
+        //[System.Serializable]
+        //public class TakedamageEvent : UnityEvent<float> { }
 
         LazyValue<float> healthPoints;
         private bool isDead = false;
@@ -57,8 +63,6 @@ namespace RPG.Attributes
         {
             if (IsImmortal) return;
 
-            //print(gameObject.name + " took Damage: " + damage);
-
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
 
             if (healthPoints.value == 0)
@@ -68,7 +72,7 @@ namespace RPG.Attributes
             }
             else
             {
-                takeDamage.Invoke();
+                takeDamage.Invoke(damage);
             }
         }
 
