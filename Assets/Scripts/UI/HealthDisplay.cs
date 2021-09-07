@@ -7,7 +7,7 @@ namespace RPG.UI
 {
     public class HealthDisplay : MonoBehaviour
     {
-        Health health;
+        private Health health;
 
         private void Awake()
         {

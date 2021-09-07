@@ -13,8 +13,8 @@ namespace RPG.Attributes
         [SerializeField] bool IsImmortal = false;
         [SerializeField] float regenerationPercentage = 70;
 
-        [SerializeField] UnityEvent<float> onTakeDamage;
-        [SerializeField] UnityEvent onDie;
+        [SerializeField] UnityEvent<float> onTakeDamage; // Chance to Pascal Case It´s a Method
+        [SerializeField] UnityEvent onDie; // Same Above
 
         // Unity does not reconize a Generic Type, need to be created a subclass from that event
         // But It Works on unity 2020+
