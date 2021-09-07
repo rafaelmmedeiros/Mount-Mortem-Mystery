@@ -1,3 +1,4 @@
+using RPG.Control;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -35,21 +36,26 @@ namespace RPG.SceneManagement
                 yield break;
             }
 
-
+            // START TRANSITION
             DontDestroyOnLoad(gameObject);
 
             Fader fader = FindObjectOfType<Fader>();
-
             SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+            PlayerController playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            playerController.enabled = false;
 
             yield return fader.FadeOut(fadeOutTime);
 
+            // MIDDLE POINT
             savingWrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
+            PlayerController newPlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            newPlayerController.enabled = false;
 
             savingWrapper.Load();
 
+            // FINISH TRANSITION
             Portal otherPortal = GetOtherPortal();
 
             UpdatePlayer(otherPortal);
@@ -57,7 +63,10 @@ namespace RPG.SceneManagement
             savingWrapper.Save();
 
             yield return new WaitForSeconds(fadeWaitTime);
-            yield return fader.FadeIn(fadeInTime);
+            fader.FadeIn(fadeInTime);
+
+            // END
+            newPlayerController.enabled = true;
 
             Destroy(gameObject);
         }
