@@ -36,6 +36,8 @@ MonoBehaviour:
   - type: 2
     texture: {fileID: 2800000, guid: ce683041f000c7c48b73e8fbda566384, type: 3}
     hotspot: {x: 0, y: 0}
+  maxNavMeshProjectionDistance: 1
+  maxNavPathLenght: 20
 --- !u!114 &2714143087995690432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,6 +61,10 @@ PrefabInstance:
     - target: {fileID: -7039643240590925230, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: uniqueIdentifier
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249570270271796497, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2304746420585007751, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: m_UseGravity
@@ -112,6 +118,10 @@ PrefabInstance:
       propertyPath: rightHandTransform
       value: 
       objectReference: {fileID: 7680522049951705701}
+    - target: {fileID: 2975383932164951919, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5477636830816815559, guid: 82a76e493c4c6e24f954ea41c1dc6d80, type: 3}
       propertyPath: m_Name
       value: Player

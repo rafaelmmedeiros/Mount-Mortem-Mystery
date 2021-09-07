@@ -12,7 +12,9 @@ namespace RPG.Attributes
     {
         [SerializeField] bool IsImmortal = false;
         [SerializeField] float regenerationPercentage = 70;
-        [SerializeField] UnityEvent<float> takeDamage;
+
+        [SerializeField] UnityEvent<float> onTakeDamage;
+        [SerializeField] UnityEvent onDie;
 
         // Unity does not reconize a Generic Type, need to be created a subclass from that event
         // But It Works on unity 2020+
@@ -65,14 +67,13 @@ namespace RPG.Attributes
 
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
 
+            onTakeDamage.Invoke(damage);
+
             if (healthPoints.value == 0)
             {
+                onDie.Invoke();
                 Die();
                 AwardExperience(instigator);
-            }
-            else
-            {
-                takeDamage.Invoke(damage);
             }
         }
 
