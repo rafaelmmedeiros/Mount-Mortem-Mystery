@@ -7,7 +7,7 @@ namespace RPG.Combat
     {
         public void Onhit()
         {
-
+            print("gameObject.name: " + gameObject.name);
         }
 
     }

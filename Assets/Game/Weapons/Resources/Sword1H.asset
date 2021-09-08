@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80620435e81814469207e548a86dc84, type: 3}
   m_Name: Sword1H
   m_EditorClassIdentifier: 
-  equipedPrefab: {fileID: 781629566351419369, guid: 6e09aea458a49df4b92d6a7f32a8afe3, type: 3}
+  equipedPrefab: {fileID: -5836982474596773061, guid: 6e09aea458a49df4b92d6a7f32a8afe3, type: 3}
   animationOverride: {fileID: 22100000, guid: ebf991ab30140c444a79e2c2cec238f4, type: 2}
   damage: 10
   percentageBonus: 20

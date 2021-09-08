@@ -16,14 +16,15 @@ namespace RPG.Combat
 
         const string weaponName = "Weapon";
 
-        public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
+        public Weapon Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
             DestroyOldWeapon(rightHand, leftHand);
 
+            Weapon weapon = null;
             if (equipedPrefab != null)
             {
                 Transform handTransform = GetTransformHand(rightHand, leftHand);
-                Weapon weapon = Instantiate(equipedPrefab, handTransform);
+                weapon = Instantiate(equipedPrefab, handTransform);
                 weapon.gameObject.name = weaponName;
             }
 
@@ -37,6 +38,8 @@ namespace RPG.Combat
             {
                 animator.runtimeAnimatorController = overrideCOntroller.runtimeAnimatorController;
             }
+
+            return weapon;
         }
 
         public bool HasProjectile()
@@ -66,6 +69,14 @@ namespace RPG.Combat
         }
 
         //  PRIVATES
+        private Transform GetTransformHand(Transform rightHand, Transform leftHand)
+        {
+            Transform handTransform;
+            if (isRightHand) handTransform = rightHand;
+            else handTransform = leftHand;
+            return handTransform;
+        }
+
         private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
         {
             Transform oldWeapon = rightHand.Find(weaponName);
@@ -77,14 +88,6 @@ namespace RPG.Combat
 
             oldWeapon.name = "DESTROY"; //  Added to avoid conflicts
             Destroy(oldWeapon.gameObject);
-        }
-
-        private Transform GetTransformHand(Transform rightHand, Transform leftHand)
-        {
-            Transform handTransform;
-            if (isRightHand) handTransform = rightHand;
-            else handTransform = leftHand;
-            return handTransform;
         }
     }
 }
