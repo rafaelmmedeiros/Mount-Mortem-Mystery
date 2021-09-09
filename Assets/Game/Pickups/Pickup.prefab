@@ -58,3 +58,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: 088d4667cb571c34bb5bb192d6ba6813, type: 2}
+  healthToRestore: 0
+  respawnTime: 5

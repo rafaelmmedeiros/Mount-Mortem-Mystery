@@ -86,6 +86,11 @@ namespace RPG.Attributes
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
+        public void Heal(float healthToRestore)
+        {
+            healthPoints.value = Mathf.Min(healthPoints.value + healthToRestore, GetMaxHealthPoints());
+        }
+
         public float GetPercentageHealthPoints()
         {
             return 100 * GetFraction();
