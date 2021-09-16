@@ -81,12 +81,6 @@ namespace RPG.Combat
             target = combatTarget.GetComponent<Health>();
         }
 
-        private Weapon AttachWeapon(WeaponConfig weapon)
-        {
-            Animator animator = GetComponent<Animator>();
-            return weapon.Spawn(rightHandTransform, leftHandTransform, animator);
-        }
-
         private bool IsInRange()
         {
             return Vector3.Distance(transform.position, target.transform.position) <= currentWeaponConfig.GetRange();
@@ -96,6 +90,12 @@ namespace RPG.Combat
         {
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("stopAttack");
+        }
+
+        private Weapon AttachWeapon(WeaponConfig weapon)
+        {
+            Animator animator = GetComponent<Animator>();
+            return weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
         private Weapon SetupDefaultWeapon()

@@ -12,9 +12,13 @@ namespace RPG.Control
     {
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float chaseDistance = 5f;
+
         [SerializeField] float suspiciousTime = 5f;
+        [SerializeField] float aggreveteCoolTime = 5f;
+
         [SerializeField] float wayPointTolerance = 1f;
         [SerializeField] float wayPointDwellTime = 3f;
+
         [Range(0, 1)]
         [SerializeField] float patrolSpeedFraction = 0.2f;
 
@@ -28,6 +32,7 @@ namespace RPG.Control
 
         float timeSinceLastSawPlayer = Mathf.Infinity;
         float timeSinceArrivedAtWayPoint = Mathf.Infinity;
+        float timeSinceAggreveted = Mathf.Infinity;
 
         private void Awake()
         {
@@ -39,11 +44,6 @@ namespace RPG.Control
             guardPosition = new LazyValue<Vector3>(GetGuardPosition);
         }
 
-        private Vector3 GetGuardPosition()
-        {
-            return transform.position;
-        }
-
         private void Start()
         {
             guardPosition.ForceInit();
@@ -53,7 +53,7 @@ namespace RPG.Control
         {
             if (health.IsDead()) return;
 
-            if (InAttackRangeToPlayer() && fighter.CanAttack(player))
+            if (IsAggreveted() && fighter.CanAttack(player))
             {
                 AttackBehavior();
             }
@@ -69,10 +69,31 @@ namespace RPG.Control
             UpdateTimers();
         }
 
-        private void UpdateTimers()
+        private bool IsAggreveted()
         {
-            timeSinceLastSawPlayer += Time.deltaTime;
-            timeSinceArrivedAtWayPoint += Time.deltaTime;
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            return distanceToPlayer < chaseDistance || timeSinceAggreveted < aggreveteCoolTime;
+        }
+
+        public void Aggrevete()
+        {
+            timeSinceAggreveted = 0;
+        }
+
+        private void AttackBehavior()
+        {
+            timeSinceLastSawPlayer = 0;
+            fighter.Attack(player);
+        }
+
+        private void SuspiciousBehavior()
+        {
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+
+        private Vector3 GetGuardPosition()
+        {
+            return transform.position;
         }
 
         private void PatrolBehavior()
@@ -110,23 +131,14 @@ namespace RPG.Control
             return patrolPath.GetWaypoint(currentWayPointIndex);
         }
 
-        private void SuspiciousBehavior()
+        private void UpdateTimers()
         {
-            GetComponent<ActionScheduler>().CancelCurrentAction();
+            timeSinceLastSawPlayer += Time.deltaTime;
+            timeSinceArrivedAtWayPoint += Time.deltaTime;
+            timeSinceAggreveted += Time.deltaTime;
         }
 
-        private void AttackBehavior()
-        {
-            timeSinceLastSawPlayer = 0;
-            fighter.Attack(player);
-        }
-
-        private bool InAttackRangeToPlayer()
-        {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            return distanceToPlayer < chaseDistance;
-        }
-
+        //  DEBUG
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.blue;
