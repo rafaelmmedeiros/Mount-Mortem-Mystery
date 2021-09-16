@@ -16,6 +16,8 @@ namespace RPG.Control
         [SerializeField] float suspiciousTime = 5f;
         [SerializeField] float aggreveteCoolTime = 5f;
 
+        [SerializeField] float shoutDistance = 10f;
+
         [SerializeField] float wayPointTolerance = 1f;
         [SerializeField] float wayPointDwellTime = 3f;
 
@@ -84,6 +86,21 @@ namespace RPG.Control
         {
             timeSinceLastSawPlayer = 0;
             fighter.Attack(player);
+
+            //  Call same faction to help
+            AggreveteNearbyFriends();
+        }
+
+        private void AggreveteNearbyFriends()
+        {
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up, 0);
+            foreach (RaycastHit hit in hits)
+            {
+                AiController allyToCall = hit.collider.GetComponent<AiController>();
+                if (allyToCall == null) continue; // Sorry, no friends found, you are alone... :(
+
+                allyToCall.Aggrevete();
+            }
         }
 
         private void SuspiciousBehavior()
